@@ -2,10 +2,10 @@
 
 OpenEBS is a open source storage platform delivering containerized block storage for containers. 
 
-Yes! The storage controller functionality is itself, delivered as containers. An OpenEBS Volume comprises of one or more containers working as a clustered microservice, providing block storage to other containers. This micro-services based architecture for storage controller functionality - where data for each volume is served by its own set of containers as against a single monolithic storage controller serving multiple volumes. This is what differentiates OpenEBS from traditional storage appliances..
+Yes! The storage controller functionality is itself, delivered as containers. An OpenEBS Volume comprises of one or more containers working as a clustered micro-service, providing block storage to other containers. This micro-services based architecture for storage controller functionality - where data for each volume is served by its own set of containers as against a single monolithic storage controller serving multiple volumes. This is what differentiates OpenEBS from traditional storage appliances.
 
 OpenEBS Storage Controller functionality comprises of serveral micro-services (or containers) that can be classified into two broad categories: 
-- OpenEBS Data Plane - that serves the data to the applications and 
+- OpenEBS Data Plane - that serves the data to the applications, and 
 - OpenEBS Control Plane - that manages the OpenEBS Volume Containers
 If you notice this classification, resembling a typical Container Orchestrator (CO), it is because OpenEBS Volumes are delivered through containers and these containers are better managed by COs! Hence OpenEBS Control Plane services work in conjunction with the CO - schedulers, apiserver, and so on.
  
@@ -35,7 +35,7 @@ OpenEBS Control Plane - auguments the functionality provided by the Container Or
 ![OpenEBS Control Plane](../../documentation/source/_static/OpenEBS-Control-Plane.png)
 
 OpenEBS Control Plane is also delivered as micro-services, where the services built can be classified as follows:
-- Plugins into Container Orchestrotors, which augument the functionality by hooking into the framework provided like:
+- Plugins into Container Orchestrators, which augument the functionality by hooking into the framework provided like:
   - K8s Dynamic Provisioners - [openebs-provisioner](https://github.com/openebs/external-storage/tree/master/openebs)
   - Kube Dashboard - [openebs-dashboard](https://github.com/openebs/dashboard)
   - Extended Schema - like CRDs in case of Kubernetes to store the OpenEBS specific configuration related data
@@ -43,7 +43,7 @@ OpenEBS Control Plane is also delivered as micro-services, where the services bu
   - maya-apiserver - includes the API for performing Volume operations that can translate requests into CO specific operations
   - maya-mulebot - uses the information gathered to suggest optimized placement and event handling tips
   - maya-connect - allows to upload the monitoring data to maya-cloud for further storage access pattern analysis
-- Node Services, provides OpenEBS specific storage intelligence running along-side kubelet like:
+- Node Services, provides OpenEBS specific storage intelligence running alongside kubelet like:
   - maya-agent - includes storage management functionality 
 
 Monitoring and Tracing capabilities are added by instrumenting the above services with prometheus, heapster, grafana and jaegar. 
